@@ -28,10 +28,11 @@ public class Main {
         //Удаленный сервис
         CloseableHttpResponse response = httpClient.execute(request);
         //Преобразование json
-        List<Cat> cats = mapper.readValue(response.getEntity().getContent(), new TypeReference<>() {});
+        List<Cat> cats = mapper.readValue(response.getEntity().getContent(), new TypeReference<>() {
+        });
 
         cats.stream()
-                .filter(cat -> cat.getUpvotes() !=null)
+                .filter(cat -> cat.getUpvotes() != null)
                 .forEach(System.out::println);
     }
 }
